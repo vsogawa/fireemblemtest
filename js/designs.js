@@ -23,9 +23,12 @@ preload(
     "img/felicia_shock.png",
     "img/takumi_shock.png",
     "img/elise_shock.png",
+    "img/garon_shock.png",
     "img/felicia_sad.png",
     "img/takumi_sad.png",
     "img/elise_grumpy.png",
+    "https://github.com/vsogawa/fireemblemtest/blob/master/img/NameBox.png?raw=true",
+    "https://github.com/vsogawa/fireemblemtest/blob/master/img/TextBox.png?raw=true"
 )
 
 //class FEsprite for all characters and their sprites/talking lines
