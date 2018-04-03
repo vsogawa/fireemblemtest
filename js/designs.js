@@ -1,3 +1,34 @@
+//preload sprites
+var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
+preload(
+    "img/felicia_neutral.png",
+    "img/takumi_neutral.png",
+    "img/elise_neutral.png",
+    "img/garon_neutral.png",
+    "img/felicia_happy.png",
+    "img/takumi_happy.png",
+    "img/elise_happy.png",
+    "img/garon_happy.png",
+    "img/felicia_angry.png",
+    "img/takumi_angry.png",
+    "img/elise_angry.png",
+    "img/garon_melt.png",
+    "img/felicia_shock.png",
+    "img/takumi_shock.png",
+    "img/elise_shock.png",
+    "img/felicia_sad.png",
+    "img/takumi_sad.png",
+    "img/elise_grumpy.png",
+)
+
+//class FEsprite for all characters and their sprites/talking lines
 class FEsprite {
     constructor(character) {
         this.angry = "img/"+character+"_angry.png",
@@ -36,7 +67,6 @@ class FEsprite {
             this.name = "Garon"
         }
     }
-
 }
 
 let elise = new FEsprite("elise");
@@ -45,8 +75,10 @@ let felicia = new FEsprite("felicia");
 let garon = new FEsprite("garon");
 let currentPageChara = "";
 
+//create an array of all available characters from which to randomly pick one
 let charaArray = [elise, takumi, felicia, garon];
 
+//on document load, pick a random character to display
 $(document).ready(function() {
     let randomCharacter = charaArray[Math.floor(Math.random() * charaArray.length)];
     $("#sprite").append("<img id = \"chara\" src=" + randomCharacter.neutral + ">");
@@ -54,6 +86,7 @@ $(document).ready(function() {
     $("#nametext").empty().append(currentPageChara.name);
 })
 
+//when new hero icon is clicked, choose a hero that is not the one currently displayed
 $(".newHero").on("click", function(){
     let randomCharacter = charaArray[Math.floor(Math.random() * charaArray.length)];
     while (randomCharacter === currentPageChara) {
@@ -64,6 +97,8 @@ $(".newHero").on("click", function(){
     $("#text").empty().append("Welcome to this test page! How are you today?");
  $("#nametext").empty().append(currentPageChara.name);
 })
+
+//when one of the 4 screen icons are clicked, characters react
 
 $(".fa-diamond").on("click", function(){
     if (currentPageChara === garon) {
