@@ -59,9 +59,9 @@ class FEsprite {
             this.name = "Felicia"
         }
         if (character === "garon") {
-            this.diamond = "......."
+            this.diamond = ".............."
             this.bomb = ".............I wouldn't have it any other way."
-            this.lightning = "..............."
+            this.lightning = "........................."
             this.throne = "*GROANS OF INCREASING DISCOMFORT*"
             this.melt = "img/garon_melt.png"
             this.name = "Garon"
@@ -80,7 +80,7 @@ let charaArray = [elise, takumi, felicia, garon];
 
 //on document load, pick a random character to display
 $(document).ready(function() {
-    let randomCharacter = charaArray[Math.floor(Math.random() * charaArray.length)];
+    let randomCharacter = charaArray[Math.floor(Math.random() * (charaArray.length-1))];
     $("#sprite").append("<img id = \"chara\" src=" + randomCharacter.neutral + ">");
     currentPageChara = randomCharacter;
     $("#nametext").empty().append(currentPageChara.name);
@@ -94,7 +94,12 @@ $(".newHero").on("click", function(){
     }
     $("#sprite").empty().append("<img id = \"chara\" src=" + randomCharacter.neutral + ">");
     currentPageChara = randomCharacter;
-    $("#text").empty().append("Welcome to this test page! How are you today?");
+    if (currentPageChara === garon) {
+        $("#text").empty().append(".......");
+    }
+    else {
+        $("#text").empty().append("Welcome to this test page! How are you today?"); 
+    }
  $("#nametext").empty().append(currentPageChara.name);
 })
 
