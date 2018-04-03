@@ -24,7 +24,7 @@ class FEsprite {
             this.diamond = "Th-thank you for your kindness!"
             this.bomb = "If that is what you desire, I will follow you until the end."
             this.lightning = "Oh my! A-Are you okay?"
-            this.throne = "??"
+            this.throne = "????"
             this.name = "Felicia"
         }
         if (character === "garon") {
@@ -32,6 +32,7 @@ class FEsprite {
             this.bomb = ".............I wouldn't have it any other way."
             this.lightning = "..............."
             this.throne = "*GROANS OF INCREASING DISCOMFORT*"
+            this.melt = "img/garon_melt.png"
             this.name = "Garon"
         }
     }
@@ -44,7 +45,7 @@ let felicia = new FEsprite("felicia");
 let garon = new FEsprite("garon");
 let currentPageChara = "";
 
-let charaArray = [elise, takumi, felicia];
+let charaArray = [elise, takumi, felicia, garon];
 
 $(document).ready(function() {
     let randomCharacter = charaArray[Math.floor(Math.random() * charaArray.length)];
@@ -65,12 +66,22 @@ $(".newHero").on("click", function(){
 })
 
 $(".fa-diamond").on("click", function(){
-    $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.happy + ">");
+    if (currentPageChara === garon) {
+        $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.neutral + ">");
+    }
+    else {
+        $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.happy + ">");
+    }
     $("#text").empty().append(currentPageChara.diamond);
 })
 
 $(".fa-bomb").on("click", function(){
-    $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.angry + ">");
+    if (currentPageChara === garon) {
+        $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.happy + ">");
+    }
+    else {
+        $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.angry + ">");
+    }
     $("#text").empty().append(currentPageChara.bomb);
 })
 
@@ -81,7 +92,7 @@ $(".fa-bolt").on("click", function(){
 
 $(".fa-wheelchair").on("click", function(){
     if (currentPageChara === garon) {
-        $("#sprite").empty().append("<img id = \"chara\" src = garon_melt.png>");
+        $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.melt + ">");
     }
     if (currentPageChara === takumi || currentPageChara === felicia) {
         $("#sprite").empty().append("<img id = \"chara\" src=" + currentPageChara.sad + ">");
